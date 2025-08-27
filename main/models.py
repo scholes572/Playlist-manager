@@ -1,5 +1,5 @@
-from sqlalchemy import Integer, String, Column, ForeignKey
-from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy import Integer, String, create_engine, Column, ForeignKey
+from sqlalchemy.orm import sessionmaker, declarative_base, relationship
 
 Base = declarative_base()
 
@@ -29,3 +29,10 @@ class Song(Base):
     duration = Column(String(10))
     album_id = Column(Integer, ForeignKey("album.id"))
     album = relationship("Album", back_populates="songs")
+
+
+# Database setup
+engine = create_engine("sqlite:///music.db")
+Base.metadata.create_all(bind=engine)
+Session = sessionmaker(bind=engine)
+session = Session()
