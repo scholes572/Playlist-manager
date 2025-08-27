@@ -21,3 +21,11 @@ class Album(Base):
 
     artist = relationship("Artist", back_populates="albums")
     songs = relationship("Song", back_populates="album")   
+
+class Song(Base):
+    __tablename__ = "Song"
+    id = Column(Integer, primary_key=True)
+    title = Column(String(100), nullable=False)
+    duration = Column(String(10))
+    album_id = Column(Integer, ForeignKey("album.id"))
+    album = relationship("Album", back_populates="songs")
