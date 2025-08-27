@@ -36,4 +36,10 @@ class Song(Base):
 
     #relationships 
     album = relationship("Album", back_populates="songs")
-    
+
+
+engine = create_engine("sqlite:///music.db") 
+Base.metadata.create_all(bind=engine)
+
+Session = sessionmaker(bind=engine)
+session = Session()
