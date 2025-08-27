@@ -23,16 +23,23 @@ class Album(Base):
     songs = relationship("Song", back_populates="album")   
 
 class Song(Base):
-    __tablename__ = "Song"
+    __tablename__ = "song"
     id = Column(Integer, primary_key=True)
     title = Column(String(100), nullable=False)
-    duration = Column(String(10))
+    duration = Column(Integer)
     album_id = Column(Integer, ForeignKey("album.id"))
     album = relationship("Album", back_populates="songs")
 
 
 # Database setup
-engine = create_engine("sqlite:///music.db")
+# The connection string is loaded from a configuration file for better maintainability.
+import configparser
+
+config = configparser.ConfigParser()
+config.read("config.ini")
+db_url = config.get("database", "connection_string", fallback="sqlite:///music.db")
+
+engine = create_engine(db_url)
 Base.metadata.create_all(bind=engine)
 Session = sessionmaker(bind=engine)
 session = Session()
