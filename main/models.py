@@ -10,5 +10,15 @@ class Artist(Base):
     genre = column(String(50))
     debut_year = column(Interger)
 
+
+    # relationships
     albums = relationship("Album", back_populates="artist")
     songs = relationship("Song", back_populates="album")
+
+
+class Album(Base):
+    __tablename__ = "album"
+    id = column(Interger, primary_key=True)
+    title = column(String(100), nullable=False)
+    release_year = column(Interger)
+    artist_id = column(Interger, ForeignKey("artist"))
