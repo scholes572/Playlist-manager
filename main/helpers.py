@@ -20,4 +20,15 @@ def add_album(title, release_year, artist_id):
 
 def list_albums():
     return session.query(Album).all()
+
+
+#all Song helpers
+def add_song(title, duration, album_id):
+    song = Song(title=title, duration=duration, album_id=album_id)
+    session.add(song)
+    session.commit()
+    return song 
+
+def list_songs():
+    return session.query(Song).all()
         
