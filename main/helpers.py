@@ -16,4 +16,9 @@ def add_song(title,duration, album_id):
     session.commit()
         
 
-  
+def list_artists():
+    return session.query(Artist).all()
+def list_albums():
+    return session.query(Album).all()
+def list_songs():
+    return session.query(Song).all()  
