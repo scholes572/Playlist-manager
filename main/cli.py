@@ -13,6 +13,7 @@ def main():
 
         choice = input("Choose an option: ")
 
+        # ----------------- Add Artist -----------------
         if choice == "1":
             name = input("Artist Name: ")
             genre = input("Genre: ")
@@ -25,10 +26,17 @@ def main():
             artist = add_artist(name, genre, debut_year_int)
             print(f"✅ Added Artist: {artist.name}")
 
+        # ----------------- List Artists -----------------
         elif choice == "2":
             artists = list_artists()
             for artist in artists:
                 print(f"{artist.id}. {artist.name} ({artist.genre}, {artist.debut_year})")
+
+        # ----------------- Add Album -----------------
+        elif choice == "3":
+            title = input("Album Title: ")
+            release_year = input("Release Year: ")
+            artist_id = input("Artist ID: ")
             try:
                 release_year_int = int(release_year)
                 artist_id_int = int(artist_id)
@@ -37,10 +45,18 @@ def main():
                 continue
             album = add_album(title, release_year_int, artist_id_int)
             print(f"✅ Added Album: {album.title}")
-            title = input("Album Title: ")
-            release_year = input("Release Year: ")
-            artist_id = input("Artist ID: ")
-            album = add_album(title, int(release_year), int(artist_id))
+
+        # ----------------- List Albums -----------------
+        elif choice == "4":
+            albums = list_albums()
+            for album in albums:
+                print(f"{album.id}. {album.title} ({album.release_year}) - Artist ID: {album.artist_id}")
+
+        # ----------------- Add Song -----------------
+        elif choice == "5":
+            title = input("Song Title: ")
+            duration = input("Duration (sec): ")
+            album_id = input("Album ID: ")
             try:
                 duration_int = int(duration)
                 album_id_int = int(album_id)
@@ -49,23 +65,14 @@ def main():
                 continue
             song = add_song(title, duration_int, album_id_int)
             print(f"✅ Added Song: {song.title}")
-        elif choice == "4":
-            albums = list_albums()
-            for album in albums:
-                print(f"{album.id}. {album.title} ({album.release_year}) - Artist ID: {album.artist_id}")
 
-        elif choice == "5":
-            title = input("Song Title: ")
-            duration = input("Duration (sec): ")
-            album_id = input("Album ID: ")
-            song = add_song(title, int(duration), int(album_id))
-            print(f"✅ Added Song: {song.title}")
-
+        # ----------------- List Songs -----------------
         elif choice == "6":
             songs = list_songs()
             for song in songs:
                 print(f"{song.id}. {song.title} ({song.duration} sec) - Album ID: {song.album_id}")
 
+        # ----------------- Exit -----------------
         elif choice == "0":
             print("👋 Exiting Music Database CLI...")
             break
@@ -75,5 +82,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-        
-        
