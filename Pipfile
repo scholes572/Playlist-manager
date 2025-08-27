@@ -43,6 +43,8 @@ typing-extensions = "==4.15.0"
 urllib3 = "==1.26.20"
 wcwidth = "==0.2.6"
 alembic = "*"
+pipenv = "*"
+shell = "*"
 
 [dev-packages]
 

@@ -1,10 +1,10 @@
-from sqlalchemy import Integer, String, create_engine, Column, ForeignKey
-from sqlalchemy.orm import sessionmaker, declarative_base, relationship
+from sqlalchemy import Integer, String, Column, ForeignKey
+from sqlalchemy.orm import declarative_base, relationship
 
 Base = declarative_base()
 
 class Artist(Base):
-    __table__ = "artist"
+    __tablename__ = "artist"
     id = Column(Integer, primary_key=True)
     name = Column(String(100), nullable=False)
     genre = Column(String(50))
@@ -13,7 +13,7 @@ class Artist(Base):
     albums = relationship("Album", back_populates="artist")
 
 class Album(Base):
-    __table__ = "album"
+    __tablename__ = "album"
     id = Column(Integer, primary_key=True)
     title = Column(String(100), nullable=False)
     release_year = Column(Integer)
