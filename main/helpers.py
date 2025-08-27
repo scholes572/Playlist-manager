@@ -5,3 +5,7 @@ def add_artist(name, genre=None, debut_year=None):
     session.add(artist)
     session.commit()
     return artist
+
+def list_artists():
+    return session.query(Artist).all()
+
