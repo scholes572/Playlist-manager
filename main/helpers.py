@@ -17,3 +17,7 @@ def add_album(title, release_year, artist_id):
     session.add(album)
     session.commit()
     return album
+
+def list_albums():
+    return session.query(Album).all()
+        
