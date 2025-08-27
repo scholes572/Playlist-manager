@@ -22,3 +22,7 @@ class Album(Base):
     title = column(String(100), nullable=False)
     release_year = column(Interger)
     artist_id = column(Interger, ForeignKey("artist"))
+
+    #relationships
+    artist = relationship("Artist", back_populates="albums")
+    songs = relationship("Song", back_populates="album")
