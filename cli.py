@@ -13,7 +13,6 @@ def main():
 
         choice = int(input("Choose an option: "))
 
-        # ----------------- Add Artist -----------------
         if choice == 1:
             name = input("Artist Name: ")
             genre = input("Genre: ")
@@ -26,13 +25,11 @@ def main():
             artist = add_artist(name, genre, debut_year_int)
             print(f"✅ Added Artist: {name}")
 
-        # ----------------- List Artists -----------------
         elif choice == 2:
             artists = list_artists()
             for artist in artists:
                 print(f"{artist.id}. {artist.name} ({artist.genre}, {artist.debut_year})")
 
-        # ----------------- Add Album -----------------
         elif choice == 3:
             title = input("Album Title: ")
             release_year = input("Release Year: ")
@@ -46,13 +43,11 @@ def main():
             album = add_album(title, release_year_int, artist_id_int)
             print(f"✅ Added Album: {title}")
 
-        # ----------------- List Albums -----------------
         elif choice == 4:
             albums = list_albums()
             for album in albums:
                 print(f"{album.id}. {album.title} ({album.release_year}) - Artist ID: {album.artist_id}")
 
-        # ----------------- Add Song -----------------
         elif choice == 5:
             title = input("Song Title: ")
             duration = input("Duration (sec): ")
@@ -66,14 +61,12 @@ def main():
             song = add_song(title, duration_int, album_id_int)
             print(f"✅ Added Song: {song.title}")
 
-        # ----------------- List Songs -----------------
         elif choice == 6:
             songs = list_songs()
             for song in songs:
                 print(f"{song.id}. {song.title} ({song.duration} sec) - Album ID: {song.album_id}")
 
-        # ----------------- Exit -----------------
-        elif choice == "0":
+        elif choice == 0:
             print("👋 Exiting Music Database CLI...")
             break
 
