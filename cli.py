@@ -59,7 +59,10 @@ def main():
                 print("❌ Invalid duration or album ID. Please enter valid numbers.")
                 continue
             song = add_song(title, duration_int, album_id_int)
-            print(f"✅ Added Song: {song.title}")
+            if song is not None:
+                print(f"✅ Added Song: {song.title}")
+            else:
+                print("❌ Failed to add song. Please check the album ID and try again.")
 
         elif choice == 6:
             songs = list_songs()
